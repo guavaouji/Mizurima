@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="water_supply_registration_success_message">を登録しました</string>
+    <string name="water_supply_registration_failed_message">登録に失敗しました</string>
+    <string name="history_find_failed_message">履歴取得に失敗しました</string>
+    <string name="confirmation_history_delete_message">を削除します</string>
+    <string name="history_delete_success_message">を削除しました</string>
+    <string name="history_delete_failed_message">削除に失敗しました</string>
+    <string name="notification_update_failed_message">通知の更新に失敗しました</string>
+    <string name="cancel_message">キャンセルしました</string>
+    <string name="notification_message">水分摂取の時間です</string>
+</resources>

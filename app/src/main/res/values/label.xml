@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="daily_target_label">1日の目標量[mL]</string>
+    <string name="average_water_supply_label">1度に飲む\n平均量[mL]</string>
+    <string name="notification_start_time_label">通知開始時刻</string>
+    <string name="notification_end_time_label">通知最終時刻</string>
+    <string name="to_registration_label">登録画面へ</string>
+    <string name="to_history_label">履歴画面へ</string>
+    <string name="to_settings_label">設定画面へ</string>
+    <string name="to_notification_time_label">%sまでに</string>
+    <string name="target_achievement_label">目標達成！</string>
+    <string name="required_water_supply_label">あと%,d[mL]</string>
+    <string name="water_supply_button_label">＋%,d[mL]</string>
+    <string name="total_amount_label">総量</string>
+    <string name="delete_label">削除</string>
+    <string name="history_amount_label">%,d[mL]</string>
+</resources>
