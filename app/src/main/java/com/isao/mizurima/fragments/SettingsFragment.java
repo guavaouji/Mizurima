@@ -65,11 +65,9 @@ public class SettingsFragment extends Fragment
         } else {
             averageWaterSupply = getResources().getInteger(R.integer.average_water_supply_init);
             AverageWaterSupplyDao.save(averageWaterSupply, getContext());
+            // 給水ボタンリストを更新
+            WaterSupplyUnitDao.save(averageWaterSupply, getContext());
         }
-
-        // 給水ボタンリストを更新
-        WaterSupplyUnitDao.save(averageWaterSupply, getContext());
-        List<Integer> unitList = WaterSupplyUnitDao.find(getContext());
 
         // 通知開始時刻
         String startTime;
@@ -314,6 +312,8 @@ public class SettingsFragment extends Fragment
                     // sharedのaverage_water_supplyを更新
                     int averageWaterSupply = averageWaterSupplyArray[pos];
                     AverageWaterSupplyDao.save(averageWaterSupply, getContext());
+                    // 給水ボタンリストを更新
+                    WaterSupplyUnitDao.save(averageWaterSupply, getContext());
                 }
             }
             break;
