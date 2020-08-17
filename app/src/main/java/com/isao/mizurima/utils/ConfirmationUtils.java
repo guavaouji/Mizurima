@@ -11,6 +11,7 @@ public class ConfirmationUtils {
                 ConfirmationActivity.SUCCESS_ANIMATION);
         intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, message);
         intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_DURATION_MILLIS, 750);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
@@ -19,6 +20,7 @@ public class ConfirmationUtils {
         intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
                 ConfirmationActivity.FAILURE_ANIMATION);
         intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, message);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 }

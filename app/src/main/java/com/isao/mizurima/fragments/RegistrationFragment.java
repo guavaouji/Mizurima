@@ -103,6 +103,8 @@ public class RegistrationFragment extends Fragment {
                     .find(context);
             historyList.add(0, history);
             WaterSupplyHistoryDao.save(historyList, context);
+            // sharedのwater_supply_unit_listを更新
+            WaterSupplyUnitDao.save(waterSupplyAmount, context);
         } catch (Exception e) {
             ConfirmationUtils.showFailureMessage(context.getString(
                     R.string.water_supply_registration_failed_message),
@@ -188,11 +190,10 @@ public class RegistrationFragment extends Fragment {
             button[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // TODO:２重送信防止
                     int waterSupplyAmount = (Integer) view.getTag();
                     // 履歴追加と通知更新
                     addWaterSupplyHistoryAndUpdateNotification(waterSupplyAmount, getContext());
-                    // sharedのwater_supply_unit_listを更新
-                    WaterSupplyUnitDao.save(waterSupplyAmount, getContext());
                     new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -207,6 +208,5 @@ public class RegistrationFragment extends Fragment {
         top.clearFocus();
         top.requestFocus();
     }
-
 
 }
