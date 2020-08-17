@@ -32,6 +32,9 @@
 ゴミ箱をタップすると履歴を削除できます。  
 ※昨日以前の履歴は残りません。
 
+- GooglePlayでの公開先  
+https://play.google.com/store/apps/details?id=com.isao.mizurima
+
 - アプリ作成のきっかけ  
 持病のメニエール病の治療として  
 水分摂取療法を受ける事になったことがきっかけです。  
