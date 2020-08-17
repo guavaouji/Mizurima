@@ -40,6 +40,9 @@
             android:name="com.isao.mizurima.receiver.NotificationReceiver"
             android:process=":remote" />
         <receiver
+            android:name="com.isao.mizurima.receiver.AddWaterSupplyAmountFromNotificationReceiver"
+            android:process=":remote" />
+        <receiver
             android:name="com.isao.mizurima.receiver.CreateTomorrowNotificationReceiver"
             android:process=":remote" />
         <receiver

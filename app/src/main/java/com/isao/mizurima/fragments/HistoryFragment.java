@@ -88,7 +88,6 @@ public class HistoryFragment extends Fragment {
             historyLinearLayout[i].setLayoutParams(layoutParams);
 
             // 作成時刻テキスト
-            // TODO:layout.xmlから取得
             createTimeTextView[i] = new AppCompatTextView(getContext());
             String createTimeText = dateFormat.format(historyList.get(i).getCreateTime());
             createTimeTextView[i].setText(createTimeText);

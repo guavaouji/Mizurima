@@ -13,18 +13,16 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.isao.mizurima.R;
 import com.isao.mizurima.activity.MainActivity;
+import com.isao.mizurima.dao.WaterSupplyUnitDao;
+import com.isao.mizurima.utils.Constants;
+
+import java.util.List;
 
 public class NotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent viewIntent = new Intent(context, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(
-                context, 0, viewIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
         String channelId = context.getString(R.string.mizurima_channel_id);
-
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(context, channelId)
                         .setAutoCancel(true)
@@ -32,11 +30,29 @@ public class NotificationReceiver extends BroadcastReceiver {
                         .setContentTitle(context.getString(R.string.notification_message))
                         .setCategory(Notification.CATEGORY_REMINDER)
                         .setPriority(NotificationManager.IMPORTANCE_HIGH)
-                        .setContentIntent(pendingIntent)
                         .setSound(RingtoneManager.getDefaultUri
                                 (RingtoneManager.TYPE_NOTIFICATION));
-        NotificationManagerCompat notificationManager =
-                NotificationManagerCompat.from(context);
+
+        List<Integer> waterSupplyUnits = WaterSupplyUnitDao.find(context);
+        for (Integer waterSupplyUnit : waterSupplyUnits) {
+
+            String title = String.format(context.getResources().getString(
+                    R.string.history_amount_label), waterSupplyUnit);
+
+            Intent sendIntent = new Intent(context, AddWaterSupplyAmountFromNotificationReceiver.class);
+            sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            sendIntent.putExtra(Constants.ADD_WATER_SUPPLY_AMOUNT, waterSupplyUnit);
+
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
+                    Constants.ADD_WATER_SUPPLY_AMOUNT_FROM_NOTIFICATION_REQUEST_CODE
+                            + waterSupplyUnit, sendIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            notificationBuilder.addAction(
+                    R.drawable.baseline_add_circle_white_18,
+                    title, pendingIntent);
+        }
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.notify(0, notificationBuilder.build());
     }
 }
